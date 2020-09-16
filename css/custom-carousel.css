@@ -41,6 +41,18 @@
     background: url(../assets/images/products/banner-vschool-06.jpg) no-repeat center center fixed;
 }
 
+.carousel-inner .awardV1 {
+    background: url(../assets/images/video/award/2/vkids-trend2nd-anni-final.jpg) no-repeat center center;
+}
+
+.carousel-inner .awardV2 {
+    background: url(../assets/images/video/award/3/vkids-trend-night.jpg) no-repeat center center;
+}
+
+.carousel-inner .awardV3 {
+    background: url(../assets/images/video/award/4/vschool-kiddos-recognition-2018.jpg) no-repeat center center;
+}
+
 .carousel-indicators {
     bottom: 20px;
 }
@@ -102,7 +114,7 @@
 }
 
 @media (max-width: 767px) {
-    .carousel-inner .carousel-image{
+    .carousel-inner .carousel-image {
         background-attachment: initial;
     }
 }
