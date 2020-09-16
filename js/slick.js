@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   $('.product-slider').slick({
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -9,12 +9,39 @@ jQuery(document).ready(function ($) {
     autoplaySpeed: 5000,
     arrows: true,
     responsive: [{
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-    },
+    ]
+  });
+
+  $('.video-award-slider').slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    arrows: true,
+    responsive: [{
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
       {
         breakpoint: 400,
         settings: {
@@ -60,12 +87,12 @@ jQuery(document).ready(function ($) {
     autoplaySpeed: 5000,
     arrows: true,
     responsive: [{
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    },
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
       {
         breakpoint: 400,
         settings: {
@@ -200,7 +227,7 @@ jQuery(document).ready(function ($) {
     }
   }, b.prototype.animateSlide = function (b, c) {
     var d = {},
-        e = this;
+      e = this;
     e.animateHeight(), e.options.rtl === !0 && e.options.vertical === !1 && (b = -b), e.transformsEnabled === !1 ? e.options.vertical === !1 ? e.$slideTrack.animate({
       left: b
     }, e.options.speed, e.options.easing, c) : e.$slideTrack.animate({
@@ -223,14 +250,14 @@ jQuery(document).ready(function ($) {
     }, e.options.speed))
   }, b.prototype.asNavFor = function (b) {
     var c = this,
-        d = c.options.asNavFor;
+      d = c.options.asNavFor;
     d && null !== d && (d = a(d).not(c.$slider)), null !== d && "object" == typeof d && d.each(function () {
       var c = a(this).slick("getSlick");
       c.unslicked || c.slideHandler(b, !0)
     })
   }, b.prototype.applyTransition = function (a) {
     var b = this,
-        c = {};
+      c = {};
     c[b.transitionType] = b.options.fade === !1 ? b.transformType + " " + b.options.speed + "ms " + b.options.cssEase : "opacity " + b.options.speed + "ms " + b.options.cssEase, b.options.fade === !1 ? b.$slideTrack.css(c) : b.$slides.eq(a).css(c)
   }, b.prototype.autoPlay = function () {
     var a = this;
@@ -280,9 +307,9 @@ jQuery(document).ready(function ($) {
     }
   }, b.prototype.checkResponsive = function (b, c) {
     var e, f, g, d = this,
-        h = !1,
-        i = d.$slider.width(),
-        j = window.innerWidth || a(window).width();
+      h = !1,
+      i = d.$slider.width(),
+      j = window.innerWidth || a(window).width();
     if ("window" === d.respondTo ? g = j : "slider" === d.respondTo ? g = i : "min" === d.respondTo && (g = Math.min(j, i)), d.options.responsive && d.options.responsive.length && null !== d.options.responsive) {
       f = null;
       for (e in d.breakpoints) d.breakpoints.hasOwnProperty(e) && (d.originalSettings.mobileFirst === !1 ? g < d.breakpoints[e] && (f = d.breakpoints[e]) : g > d.breakpoints[e] && (f = d.breakpoints[e]));
@@ -290,7 +317,7 @@ jQuery(document).ready(function ($) {
     }
   }, b.prototype.changeSlide = function (b, c) {
     var f, g, h, d = this,
-        e = a(b.target);
+      e = a(b.target);
     switch (e.is("a") && b.preventDefault(), e.is("li") || (e = e.closest("li")), h = 0 !== d.slideCount % d.options.slidesToScroll, f = h ? 0 : (d.slideCount - d.currentSlide) % d.options.slidesToScroll, b.data.message) {
       case "previous":
         g = 0 === f ? d.options.slidesToScroll : d.options.slidesToShow - f, d.slideCount > d.options.slidesToShow && d.slideHandler(d.currentSlide - g, !1, c);
@@ -333,7 +360,7 @@ jQuery(document).ready(function ($) {
     }), c.$slideTrack.children(this.options.slide).detach(), c.$slideTrack.detach(), c.$list.detach(), c.$slider.append(c.$slides)), c.cleanUpRows(), c.$slider.removeClass("slick-slider"), c.$slider.removeClass("slick-initialized"), c.unslicked = !0, b || c.$slider.trigger("destroy", [c])
   }, b.prototype.disableTransition = function (a) {
     var b = this,
-        c = {};
+      c = {};
     c[b.transitionType] = "", b.options.fade === !1 ? b.$slideTrack.css(c) : b.$slides.eq(a).css(c)
   }, b.prototype.fadeSlide = function (a, b) {
     var c = this;
@@ -364,9 +391,9 @@ jQuery(document).ready(function ($) {
     return a.currentSlide
   }, b.prototype.getDotCount = function () {
     var a = this,
-        b = 0,
-        c = 0,
-        d = 0;
+      b = 0,
+      c = 0,
+      d = 0;
     if (a.options.infinite === !0)
       for (; b < a.slideCount;) ++d, b = c + a.options.slidesToShow, c += a.options.slidesToScroll <= a.options.slidesToShow ? a.options.slidesToScroll : a.options.slidesToShow;
     else if (a.options.centerMode === !0) d = a.slideCount;
@@ -375,16 +402,16 @@ jQuery(document).ready(function ($) {
     return d - 1
   }, b.prototype.getLeft = function (a) {
     var c, d, f, b = this,
-        e = 0;
+      e = 0;
     return b.slideOffset = 0, d = b.$slides.first().outerHeight(!0), b.options.infinite === !0 ? (b.slideCount > b.options.slidesToShow && (b.slideOffset = -1 * b.slideWidth * b.options.slidesToShow, e = -1 * d * b.options.slidesToShow), 0 !== b.slideCount % b.options.slidesToScroll && a + b.options.slidesToScroll > b.slideCount && b.slideCount > b.options.slidesToShow && (a > b.slideCount ? (b.slideOffset = -1 * (b.options.slidesToShow - (a - b.slideCount)) * b.slideWidth, e = -1 * (b.options.slidesToShow - (a - b.slideCount)) * d) : (b.slideOffset = -1 * b.slideCount % b.options.slidesToScroll * b.slideWidth, e = -1 * b.slideCount % b.options.slidesToScroll * d))) : a + b.options.slidesToShow > b.slideCount && (b.slideOffset = (a + b.options.slidesToShow - b.slideCount) * b.slideWidth, e = (a + b.options.slidesToShow - b.slideCount) * d), b.slideCount <= b.options.slidesToShow && (b.slideOffset = 0, e = 0), b.options.centerMode === !0 && b.options.infinite === !0 ? b.slideOffset += b.slideWidth * Math.floor(b.options.slidesToShow / 2) - b.slideWidth : b.options.centerMode === !0 && (b.slideOffset = 0, b.slideOffset += b.slideWidth * Math.floor(b.options.slidesToShow / 2)), c = b.options.vertical === !1 ? -1 * a * b.slideWidth + b.slideOffset : -1 * a * d + e, b.options.variableWidth === !0 && (f = b.slideCount <= b.options.slidesToShow || b.options.infinite === !1 ? b.$slideTrack.children(".slick-slide").eq(a) : b.$slideTrack.children(".slick-slide").eq(a + b.options.slidesToShow), c = f[0] ? -1 * f[0].offsetLeft : 0, b.options.centerMode === !0 && (f = b.options.infinite === !1 ? b.$slideTrack.children(".slick-slide").eq(a) : b.$slideTrack.children(".slick-slide").eq(a + b.options.slidesToShow + 1), c = f[0] ? -1 * f[0].offsetLeft : 0, c += (b.$list.width() - f.outerWidth()) / 2)), c
   }, b.prototype.getOption = b.prototype.slickGetOption = function (a) {
     var b = this;
     return b.options[a]
   }, b.prototype.getNavigableIndexes = function () {
     var e, a = this,
-        b = 0,
-        c = 0,
-        d = [];
+      b = 0,
+      c = 0,
+      d = [];
     for (a.options.infinite === !1 ? e = a.slideCount : (b = -1 * a.options.slidesToScroll, c = -1 * a.options.slidesToScroll, e = 2 * a.slideCount); e > b;) d.push(b), b = c + a.options.slidesToScroll, c += a.options.slidesToScroll <= a.options.slidesToShow ? a.options.slidesToScroll : a.options.slidesToShow;
     return d
   }, b.prototype.getSlick = function () {
@@ -446,8 +473,8 @@ jQuery(document).ready(function ($) {
     function g(b) {
       a("img[data-lazy]", b).each(function () {
         var b = a(this),
-            c = a(this).attr("data-lazy"),
-            d = document.createElement("img");
+          c = a(this).attr("data-lazy"),
+          d = document.createElement("img");
         d.onload = function () {
           b.animate({
             opacity: 0
@@ -505,7 +532,7 @@ jQuery(document).ready(function ($) {
     }))
   }, b.prototype.refresh = function (b) {
     var c = this,
-        d = c.currentSlide;
+      d = c.currentSlide;
     c.destroy(!0), a.extend(c, c.initials, {
       currentSlide: d
     }), c.init(), b || c.changeSlide({
@@ -516,7 +543,7 @@ jQuery(document).ready(function ($) {
     }, !1)
   }, b.prototype.registerBreakpoints = function () {
     var c, d, e, b = this,
-        f = b.options.responsive || null;
+      f = b.options.responsive || null;
     if ("array" === a.type(f) && f.length) {
       b.respondTo = b.options.respondTo || "window";
       for (c in f)
@@ -540,7 +567,7 @@ jQuery(document).ready(function ($) {
     return "boolean" == typeof a ? (b = a, a = b === !0 ? 0 : d.slideCount - 1) : a = b === !0 ? --a : a, d.slideCount < 1 || 0 > a || a > d.slideCount - 1 ? !1 : (d.unload(), c === !0 ? d.$slideTrack.children().remove() : d.$slideTrack.children(this.options.slide).eq(a).remove(), d.$slides = d.$slideTrack.children(this.options.slide), d.$slideTrack.children(this.options.slide).detach(), d.$slideTrack.append(d.$slides), d.$slidesCache = d.$slides, d.reinit(), void 0)
   }, b.prototype.setCSS = function (a) {
     var d, e, b = this,
-        c = {};
+      c = {};
     b.options.rtl === !0 && (a = -a), d = "left" == b.positionProp ? Math.ceil(a) + "px" : "0px", e = "top" == b.positionProp ? Math.ceil(a) + "px" : "0px", c[b.positionProp] = a, b.transformsEnabled === !1 ? b.$slideTrack.css(c) : (c = {}, b.cssTransitions === !1 ? (c[b.animType] = "translate(" + d + ", " + e + ")", b.$slideTrack.css(c)) : (c[b.animType] = "translate3d(" + d + ", " + e + ", 0px)", b.$slideTrack.css(c)))
   }, b.prototype.setDimensions = function () {
     var a = this;
@@ -593,7 +620,7 @@ jQuery(document).ready(function ($) {
     a.setDimensions(), a.setHeight(), a.options.fade === !1 ? a.setCSS(a.getLeft(a.currentSlide)) : a.setFade(), a.$slider.trigger("setPosition", [a])
   }, b.prototype.setProps = function () {
     var a = this,
-        b = document.body.style;
+      b = document.body.style;
     a.positionProp = a.options.vertical === !0 ? "top" : "left", "top" === a.positionProp ? a.$slider.addClass("slick-vertical") : a.$slider.removeClass("slick-vertical"), (void 0 !== b.WebkitTransition || void 0 !== b.MozTransition || void 0 !== b.msTransition) && a.options.useCSS === !0 && (a.cssTransitions = !0), a.options.fade && ("number" == typeof a.options.zIndex ? a.options.zIndex < 3 && (a.options.zIndex = 3) : a.options.zIndex = a.defaults.zIndex), void 0 !== b.OTransform && (a.animType = "OTransform", a.transformType = "-o-transform", a.transitionType = "OTransition", void 0 === b.perspectiveProperty && void 0 === b.webkitPerspective && (a.animType = !1)), void 0 !== b.MozTransform && (a.animType = "MozTransform", a.transformType = "-moz-transform", a.transitionType = "MozTransition", void 0 === b.perspectiveProperty && void 0 === b.MozPerspective && (a.animType = !1)), void 0 !== b.webkitTransform && (a.animType = "webkitTransform", a.transformType = "-webkit-transform", a.transitionType = "webkitTransition", void 0 === b.perspectiveProperty && void 0 === b.webkitPerspective && (a.animType = !1)), void 0 !== b.msTransform && (a.animType = "msTransform", a.transformType = "-ms-transform", a.transitionType = "msTransition", void 0 === b.msTransform && (a.animType = !1)), void 0 !== b.transform && a.animType !== !1 && (a.animType = "transform", a.transformType = "transform", a.transitionType = "transition"), a.transformsEnabled = null !== a.animType && a.animType !== !1
   }, b.prototype.setSlideClasses = function (a) {
     var c, d, e, f, b = this;
@@ -612,12 +639,12 @@ jQuery(document).ready(function ($) {
     b.options.autoplay === !0 && b.options.pauseOnHover === !0 && (b.paused = a, a ? b.autoPlayClear() : b.autoPlay())
   }, b.prototype.selectHandler = function (b) {
     var c = this,
-        d = a(b.target).is(".slick-slide") ? a(b.target) : a(b.target).parents(".slick-slide"),
-        e = parseInt(d.attr("data-slick-index"));
+      d = a(b.target).is(".slick-slide") ? a(b.target) : a(b.target).parents(".slick-slide"),
+      e = parseInt(d.attr("data-slick-index"));
     return e || (e = 0), c.slideCount <= c.options.slidesToShow ? (c.setSlideClasses(e), c.asNavFor(e), void 0) : (c.slideHandler(e), void 0)
   }, b.prototype.slideHandler = function (a, b, c) {
     var d, e, f, g, h = null,
-        i = this;
+      i = this;
     return b = b || !1, i.animating === !0 && i.options.waitForAnimate === !0 || i.options.fade === !0 && i.currentSlide === a || i.slideCount <= i.options.slidesToShow ? void 0 : (b === !1 && i.asNavFor(a), d = a, h = i.getLeft(d), g = i.getLeft(i.currentSlide), i.currentLeft = null === i.swipeLeft ? g : i.swipeLeft, i.options.infinite === !1 && i.options.centerMode === !1 && (0 > a || a > i.getDotCount() * i.options.slidesToScroll) ? (i.options.fade === !1 && (d = i.currentSlide, c !== !0 ? i.animateSlide(g, function () {
       i.postSlide(d)
     }) : i.postSlide(d)), void 0) : i.options.infinite === !1 && i.options.centerMode === !0 && (0 > a || a > i.slideCount - i.options.slidesToScroll) ? (i.options.fade === !1 && (d = i.currentSlide, c !== !0 ? i.animateSlide(g, function () {
@@ -701,7 +728,7 @@ jQuery(document).ready(function ($) {
     }).first().attr("aria-selected", "true").end().find("button").attr("role", "button").end().closest("div").attr("role", "toolbar"), b.activateADA()
   }, b.prototype.activateADA = function () {
     var a = this,
-        b = a.$slider.find("*").is(":focus");
+      b = a.$slider.find("*").is(":focus");
     a.$slideTrack.find(".slick-active").attr({
       "aria-hidden": "false",
       tabindex: "0"
@@ -719,10 +746,10 @@ jQuery(document).ready(function ($) {
     })
   }, a.fn.slick = function () {
     var g, a = this,
-        c = arguments[0],
-        d = Array.prototype.slice.call(arguments, 1),
-        e = a.length,
-        f = 0;
+      c = arguments[0],
+      d = Array.prototype.slice.call(arguments, 1),
+      e = a.length,
+      f = 0;
     for (f; e > f; f++)
       if ("object" == typeof c || "undefined" == typeof c ? a[f].slick = new b(a[f], c) : g = a[f].slick[c].apply(a[f].slick, d), "undefined" != typeof g) return g;
     return a
